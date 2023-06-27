@@ -1,0 +1,2 @@
+class Gradesheet:
+    pass
