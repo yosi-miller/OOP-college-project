@@ -3,9 +3,9 @@ from person_class import Person
 class Student(Person):
 
     def __init__(self, name, email, instructor):
-        Person.__init__(name, email)
+        Person.__init__(self, name, email)
         self.teacher = []
-        self.instructor = instructor
+        self.instructor_name = instructor
         self.profession = []
 
     def add_teacher(self, teacher): #הוספת מורה
@@ -21,4 +21,4 @@ class Student(Person):
         self.profession.remove(profession)
 
     def switch_instructor(self, instructor):  # שינוי מתרגל/מדריך
-        self.instructor = instructor
+        self.instructor_name = instructor
