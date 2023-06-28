@@ -6,7 +6,7 @@ from student_class import Student
 class College:
     def __init__(self, name, db_name):
         self.name = name
-        self.studentManger = StudentManager()
+        self.studentManger = StudentsManager()
         self.setting_data = DataManagement(db_name)
 
     # def add_student(self, student):

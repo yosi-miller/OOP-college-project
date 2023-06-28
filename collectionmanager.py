@@ -10,41 +10,35 @@ class CollectionManager:
             if student.id == id:
                 return student.name
 
-
     def remove(self, id):
+        """
+        this is remove the instants student or teacher or Instruction
+        :param id: the id of the instance that we want to remove
+        """
+        for student in self.collection:
+            if student.id == id:
+                self.collection.remove(student)
+
+    def show_data(self):
+        """This is show all data of the students or student or teacher or Instruction"""
+        for student in self.collection:
+            print(f"Student name: {student.name} , Student id: {student.id} , Student email: {student.email}")
+
+    def get_all_name_instance(self):
+        """
+        this function return all name of the instance
+        :return: list of all name of the instance
+        """
+        return [instance for instance in self.collection]
+
+
+    def get_the_amount_of_student(self):  # This is get the amount of the teacher or Instruction student
         pass
 
-    def print_all_students(self):
+    def get_profession_teacher(self, id):   # איזה מקצועות יש למורה או לתלמיד (על ידי זיהוי id)
         pass
 
 
-class StudentManager(CollectionManager):
-    def average_tests_all_student(self, profession): #ממוצע ציון כיתת פר מקצוע
-        pass
-
-    def average_tests_student(self, id, profession):
-        pass
-
-    def get_the_amount_of_student(self):
-        pass
 
 
-class TeachersManager(CollectionManager):
 
-    def get_the_amount_of_student(self): #כמה תללמידים מלמד
-        pass
-
-    def get_the_student_names(self): #שמות התלמידים של המדריך
-        pass
-
-    def get_the_profession(self, id): # איזה מקצועות יש למורה (על ידי זיהוי id)
-        pass
-
-
-class InstrctionManager(CollectionManager):
-
-    def get_the_amount_of_student(self): #כמה תללמידים מדריך
-        pass
-
-    def get_the_student_names(self): #שמות התלמידים של המדריך
-        pass
