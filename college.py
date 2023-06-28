@@ -1,5 +1,5 @@
 from collectionmanager import *
-from person import *
+from person_class import *
 from data_management import DataManagement
 
 

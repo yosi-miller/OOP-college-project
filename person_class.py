@@ -8,14 +8,4 @@ class Person:
         self.email = email
 
 
-class Student(Person):
-    pass
-
-
-class Teacher(Person):
-    pass
-
-
-class Instructor(Person):
-    pass
 
