@@ -1,7 +1,7 @@
 from collectionmanager import *
 from person_class import *
 from data_management import DataManagement
-
+from student_class import Student
 
 class College:
     def __init__(self, name, db_name):
