@@ -10,8 +10,8 @@ class TeachersManager(CollectionManager):
         :return:
         """
         for teacher in self.__collection:
-            if teacher.get_Id == teacher_id:
-                return teacher.get_name
+            if teacher.Id == teacher_id:
+                return teacher.name
 
     def get_course_for_teacher(self, teacher_id):
         """
@@ -19,8 +19,8 @@ class TeachersManager(CollectionManager):
         :return: list of all courses
         """
         for teacher in self.get_collection:
-            if teacher.get_Id == teacher_id:
-                return teacher.get_course.get_name
+            if teacher.Id == teacher_id:
+                return teacher.get_course.name
 
     @property
     def teachers(self):
@@ -30,7 +30,7 @@ class TeachersManager(CollectionManager):
         """
         data = []
         for TEACHER in self.get_collection:
-            data.append(f"name: {TEACHER.get_name}, id: {TEACHER.get_Id}, email: {TEACHER.get_email}, course:{TEACHER.get_course.get_name}\n")
+            data.append(f"name: {TEACHER.name}, id: {TEACHER.Id}, email: {TEACHER.email}, course:{TEACHER.get_course.name}\n")
         return "".join(data)
 
     # def add_course(self, course, teacher_id):

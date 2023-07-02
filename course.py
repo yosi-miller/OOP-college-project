@@ -7,10 +7,10 @@ class Course:
         Course.__course_id += 100
 
     @property
-    def get_name(self):
+    def name(self):
         return self.__name
 
     @property
-    def get_course_code(self):
+    def course_code(self):
         return self.__course_code
 
