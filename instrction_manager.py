@@ -6,4 +6,4 @@ class InstrctionManager(CollectionManager):
         pass
 
     def get_instructor_by_student(self, student_name):  # הפונקציה מקבלת שם תלמיד ומחזירה את המדריך שלו
-        pass
+        print(4)
