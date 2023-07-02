@@ -13,14 +13,7 @@ class TeachersManager(CollectionManager):
             if teacher.Id == teacher_id:
                 return teacher.name
 
-    def get_course_for_teacher(self, teacher_id):
-        """
-        get all courses for teacher
-        :return: list of all courses
-        """
-        for teacher in self.collection:
-            if teacher.Id == teacher_id:
-                return teacher.get_course.name
+
 
     @property
     def teachers(self):

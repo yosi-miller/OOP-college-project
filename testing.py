@@ -19,7 +19,6 @@ class test:
 
 
 
-a = test()
-print(a.name)
-a.name = "new name"
-print(a.name)
+dic = {"a":1, "b": 2, "c": 3}
+b = dic.values()
+print(sum(b) / len(b))
