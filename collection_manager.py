@@ -4,7 +4,7 @@ class CollectionManager:
         self.__collection = []
 
     @property
-    def get_collection(self):
+    def collection(self):
         return self.__collection
 
     def add(self, instance):

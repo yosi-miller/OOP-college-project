@@ -1,8 +1,8 @@
-class ClassesManager:
+from collection_manager import CollectionManager
 
-    def __init__(self):
-        self.__all_class = []
+class ClassesManager(CollectionManager):
 
     def show_classes_information(self):
         data = []
         for classes in self.__all_class:
+            pass

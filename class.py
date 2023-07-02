@@ -1,44 +1,49 @@
-from student_class import Student
-from teacher_class import Teacher
-
+from student import Student
+from teacher import Teacher
 
 class Class:
 
-    def __init__(self, teacher_instance, course_instance):
+    def __init__(self, teacher_instance, course_name):
         self.teacher = teacher_instance
-        self.__class_course = course_instance
+        self.__course_name = course_name
         self.__students = []
+        self.__grade_course_students = {}
+
+    @property
+    def course_name(self):
+        return self.__course_name
 
     def add_student(self, instance):
         self.__students.append(instance)
 
     def add_grade_to_student(self, grade, id_student):
-        for student in self.__students:
-            if student.Id == id_student:
-                student.add_grade_to_student(self.__class_course, grade)
+        self.__grade_course_students[id_student] = grade
 
-    def show_students_class(self, teacher_id):  # כמה תללמידים מלמד
+    def show_students_class(self):
+        """
+        show all students in the class
+        :return:
+        """
         pass
 
-    def average_tests_all_student(self, course_id):  # ממוצע ציון כיתה פר מקצוע
+    def average_test_students(self):
+        """
+        this is average test of all students in the class
+        :return:
+        """
         pass
 
-    def show_students_grate(self, student_instance):
-        """
-        this is show grate of the student
-        :param student_instance: student instance
-        :return: grate of the student
-        """
-        return student_instance.show_grade_by_course(self.__class_course)
+    def print_class_information(self):
+        pass
+
+    def __str__(self):
+        return f"Class name: {self.__course_name}\n" \
+                  f"Class teacher: {self.teacher.name}\n" \
 
 if __name__ == '__main__':
-    from course import Course
-    from instructor_class import Instructor
-    course1 = Course("python")
-    instructor = Instructor("avi", "a@a")
-    student1 = Student("avi", "a@a", instructor)
+    student1 = Student("avi", "a@a",)
     teacher = Teacher("avi", "a@a")
-    class1 = Class(instructor, teacher)
+    class1 = Class(teacher)
     class1.add_student(student1)
 
 

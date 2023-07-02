@@ -1,6 +1,6 @@
 from collection_manager import CollectionManager
-from teacher_class import Teacher
-from course import Course
+from teacher import Teacher
+
 class TeachersManager(CollectionManager):
 
     def return_name_teacher_by_id(self, teacher_id):
@@ -18,7 +18,7 @@ class TeachersManager(CollectionManager):
         get all courses for teacher
         :return: list of all courses
         """
-        for teacher in self.get_collection:
+        for teacher in self.collection:
             if teacher.Id == teacher_id:
                 return teacher.get_course.name
 
@@ -29,7 +29,7 @@ class TeachersManager(CollectionManager):
         :return: list of all teachers
         """
         data = []
-        for TEACHER in self.get_collection:
+        for TEACHER in self.collection:
             data.append(f"name: {TEACHER.name}, id: {TEACHER.Id}, email: {TEACHER.email}, course:{TEACHER.get_course.name}\n")
         return "".join(data)
 
