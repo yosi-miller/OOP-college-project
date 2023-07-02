@@ -2,9 +2,19 @@ class Person:
     id_auto_incremment = 1
 
     def __init__(self, name, email):
-        self.id = Person.id_auto_incremment
+        self.__id = Person.id_auto_incremment
         Person.id_auto_incremment += 1
-        self.name = name
-        self.email = email
+        self.__name = name
+        self.__email = email
 
+    @property
+    def get_Id(self):
+        return self.__id
 
+    @property
+    def get_name(self):
+        return self.__name
+
+    @property
+    def get_email(self):
+        return self.__email

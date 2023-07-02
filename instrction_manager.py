@@ -1,4 +1,4 @@
-from collectionmanager import CollectionManager
+from collection_manager import CollectionManager
 
 class InstrctionManager(CollectionManager):
 
