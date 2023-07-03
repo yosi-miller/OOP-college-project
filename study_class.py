@@ -2,16 +2,45 @@ from student import Student
 from teacher import Teacher
 
 class StudyClass:
+    Class_Id = 100
 
-    def __init__(self, teacher_instance, course_name):
-        self.teacher = teacher_instance
+    def __init__(self, teacher_instance, course_name: str):
+        self.__teacher = teacher_instance
         self.__course_name = course_name
+        self.__id = StudyClass.Class_Id
         self.__students = []
         self.__grade_course_students = {}
+        StudyClass.Class_Id += 100
 
     @property
     def course_name(self):
         return self.__course_name
+
+    @property
+    def students(self):
+        return self.__students
+
+    @property
+    def students_grade(self):
+        return self.__grade_course_students
+
+    @property
+    def id(self):
+        return self.__id
+
+    @property
+    def class_teacher(self):
+        return self.__teacher
+
+    @class_teacher.setter
+    def class_teacher(self, new_name):
+        self.__teacher = new_name
+
+    def remove_student(self):
+        pass
+
+    def change_grade(self):
+        pass
 
     def add_student(self, instance):
         self.__students.append(instance)
@@ -19,17 +48,19 @@ class StudyClass:
     def add_grade_to_student(self, grade, id_student):
         self.__grade_course_students[id_student] = grade
 
-    def show_students_class(self):
+    def show_all_students_class(self):
         """
         show all students in the class
-        :return:
+        :return: all students in the class
         """
-        all_students = []
+        num = 1
+        all_students = [f"{self.course_name} Course:\n"]
         for i, student in enumerate(self.__students):
-            all_students.append(student.name)
+            all_students.append(f"{num}: {student.name}")
+            num += 1
             if i != len(self.__students) - 1:  # Check if it's not the last student
                 all_students.append("\n")
-        return "".join(all_students)
+        return "".join(all_students) if len(all_students) > 1 else "Don't have a "
 
     def average_test_students(self):
         """
@@ -43,7 +74,7 @@ class StudyClass:
 
     def __str__(self):
         return f"In this class learn: {self.course_name}, "\
-               f"Teacher name: {self.teacher.name}, "\
+               f"Teacher name: {self.class_teacher.name}, "\
                f"Amount students: {len(self.__students)}"
 
 
@@ -56,9 +87,9 @@ if __name__ == '__main__':
     class1.add_student(student2)
     class1.add_grade_to_student(100, student1.Id)
     class1.add_grade_to_student(90, student2.Id)
-    print(class1.show_students_class())
-    print(class1.average_test_students())
-    print(class1.class_information())
+    print(class1.show_all_students_class())
+    # print(class1.average_test_students())
+    # print(class1.class_information())
 
 
 

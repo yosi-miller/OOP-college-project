@@ -2,9 +2,6 @@ from person import Person
 
 class Teacher(Person):
 
-    def __init__(self, name, email):
-        Person.__init__(self, name, email)
-
     def print_teacher_information(self):
         print(self)
 
