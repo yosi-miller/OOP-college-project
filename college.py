@@ -1,7 +1,8 @@
 from program_manager import ProgramManager
-from student import Student
+from courses_manager import CoursesManager
 from students_manager import StudentsManager
 from teachers_manage import TeachersManager
+from programs_manager import ProgramsManagement
 
 class College:
 
@@ -10,7 +11,9 @@ class College:
         self.city = city
         self.__studentManger = StudentsManager()
         self.__teachersManager = TeachersManager()
-        self.__classesManager = ProgramManager()
+        self.__programManager = ProgramManager()
+        self.__programsManager = ProgramsManagement()
+        self.__coursesManager = CoursesManager()
 
 
     @property
@@ -38,8 +41,16 @@ class College:
         return self.__teachersManager
 
     @property
-    def classesManager(self):
-        return self.__classesManager
+    def programManager(self):
+        return self.__programManager
+
+    @property
+    def coursesManager(self):
+        return self.__coursesManager
+
+    @property
+    def programsManager(self):
+        return self.__programsManager
 
     def __str__(self):
         return f"College name: {self.name}, College city: {self.city}"
@@ -47,9 +58,10 @@ class College:
 
 
 if __name__ == '__main__':
-    mivhar = College("mivhar", "tel aviv")
-    yosi = Student("yosi", "d@d.com", "avi")
-    c = Course("math")
-    mivhar.add_student(Student("yosi", "d@d.com", "avi"))
+    pass
+    # mivhar = College("mivhar", "tel aviv")
+    # yosi = Student("yosi", "d@d.com", "avi")
+    # c = Course("math")
+    # mivhar.add_student(Student("yosi", "d@d.com", "avi"))
 
 
