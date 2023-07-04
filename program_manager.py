@@ -5,6 +5,16 @@ from teacher import Teacher
 from course import Course
 
 class ProgramManager(CollectionManager):
+    program_num = 1
+
+    def __init__(self):
+        super().__init__()
+        self.__id = ProgramManager.program_num
+        ProgramManager.program_num += 1
+
+    @property
+    def Program_Id(self):
+        return self.__id
 
     def all_courses_teacher(self):
         """
@@ -38,7 +48,7 @@ class ProgramManager(CollectionManager):
         for Class in self.collection:
             if id_student in Class.students_grade:
                 results.append(Class.students_grade[id_student])
-        return sum(results) / len(results) if results else "Don't have a grade to the student."
+        return f"The average is: {sum(results) / len(results)}" if results else "Don't have a grade to the student."
 
     def all_courses_for_student(self, id_student):
         """
@@ -125,9 +135,9 @@ if __name__ == "__main__":
     # for i in a.collection:
     #     print(i.students_grade)
     # print(a.all_courses_teacher())
-    # print(a.all_grades_student(student1.Id))
+    print(a.all_grades_student(student2.Person_Id))
     # print(a.get_teacher_course(teacher.Id))
     # a.print_all_students_with_your_courses()
-    # print(a.average_student_courses(student2.Person_Id))
+    print(a.average_student_courses(student2.Person_Id))
     # print(a.all_courses_for_student(student1.Id))
-    print(a.show_all_data())
+    # print(a.show_all_data())
