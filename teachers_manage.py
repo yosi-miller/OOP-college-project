@@ -3,47 +3,33 @@ from teacher import Teacher
 
 class TeachersManager(CollectionManager):
 
-    def return_name_teacher_by_id(self, teacher_id):
+    def return_teacher_by_id(self, teacher_id):
         """
-        return name teacher by id
-        :param teacher_id:
-        :return:
+        get teacher by id
+        :param teacher_id: instance_teacher.id
+        :return: information about teacher
         """
-        for teacher in self.__collection:
-            if teacher.Id == teacher_id:
-                return teacher.name
+        for teacher in self.collection:
+            if teacher.Person_Id == teacher_id:
+                return teacher.return_teacher_information()
 
-
-
-    @property
-    def teachers(self):
+    def show_all_data(self):
         """
         this function return all information about teachers
         :return: list of all teachers
         """
         data = []
         for TEACHER in self.collection:
-            data.append(f"name: {TEACHER.name}, id: {TEACHER.Id}, email: {TEACHER.email}, course:{TEACHER.get_course.name}\n")
+            data.append(f"name: {TEACHER.name}, id: {TEACHER.Person_Id}, email: {TEACHER.email}\n")
         return "".join(data)
-
-    # def add_course(self, course, teacher_id):
-    #     pass
-
-    # def remove_course(self, course):
-    #     pass
-
-    # @property
-    # def list_teachers_with_course(self):
-    #     pass
 
 
 if __name__ == '__main__':
     me = TeachersManager()
-    english = Course("english")
-    python = Course("python")
-    teacher = Teacher("moshe", "m@m.com", english)
-    teacher1 = Teacher("david", "a@a.com", python)
+    teacher = Teacher("moshe", "m@m.com")
+    teacher1 = Teacher("david", "a@a.com")
     me.add(teacher)
     me.add(teacher1)
     # a = me.get_courses_for_teacher(teacher.get_Id)
-    print(me.teachers)
+    # print(me.return_teacher_by_id(teacher.Person_Id))
+    print(me.show_all_data())

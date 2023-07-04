@@ -2,15 +2,15 @@ from student import Student
 from teacher import Teacher
 
 class StudyClass:
-    Class_Id = 100
+    __Class_Id = 100
 
     def __init__(self, teacher_instance, course_name: str):
         self.__teacher = teacher_instance
         self.__course_name = course_name
-        self.__id = StudyClass.Class_Id
+        self.__id = StudyClass.__Class_Id
         self.__students = []
         self.__grade_course_students = {}
-        StudyClass.Class_Id += 100
+        StudyClass.__Class_Id += 100
 
     @property
     def course_name(self):
@@ -25,7 +25,7 @@ class StudyClass:
         return self.__grade_course_students
 
     @property
-    def id(self):
+    def Class_Id(self):
         return self.__id
 
     @property
@@ -85,8 +85,8 @@ if __name__ == '__main__':
     class1 = StudyClass(teacher,"english")
     class1.add_student(student1)
     class1.add_student(student2)
-    class1.add_grade_to_student(100, student1.Id)
-    class1.add_grade_to_student(90, student2.Id)
+    class1.add_grade_to_student(100, student1.Person_Id)
+    class1.add_grade_to_student(90, student2.Person_Id)
     print(class1.show_all_students_class())
     # print(class1.average_test_students())
     # print(class1.class_information())

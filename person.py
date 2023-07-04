@@ -8,7 +8,7 @@ class Person:
         Person.id_auto_incremment += 1
 
     @property
-    def Id(self):
+    def Person_Id(self):
         return self.__id
 
     @property

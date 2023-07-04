@@ -58,7 +58,7 @@ class ClassesManager(CollectionManager):
         """
         result = []
         for Class in self.collection:
-            if Class.class_teacher.Id == teacher_id:
+            if Class.class_teacher.Person_Id == teacher_id:
                 result.append(Class.course_name + "\n")
         return "".join(result) if result else "Don't have a teacher to the course."
 
@@ -80,7 +80,16 @@ class ClassesManager(CollectionManager):
         else:
             print("Don't have a students with your courses.")
 
-
+    def show_all_data(self):
+        """
+        this function show all classes
+        :return: all classes
+        """
+        result = []
+        for Class in self.collection:
+            result.append(f"Course name: {Class.course_name}"
+                          f"Teacher name: {Class.class_teacher.name},\n")
+        return "".join(result) if result else "Don't have a classes."
 
 
 if __name__ == "__main__":
@@ -94,7 +103,7 @@ if __name__ == "__main__":
     class1.add_student(student2)
 
     # class1.add_grade_to_student(100, student1.Id)
-    class1.add_grade_to_student(90, student2.Id)
+    class1.add_grade_to_student(90, student2.Person_Id)
 
     a = ClassesManager()
 
@@ -107,7 +116,7 @@ if __name__ == "__main__":
     class2 = StudyClass(teacher, "oop")
     class2.add_student(student1)
     class2.add_student(student2)
-    class2.add_grade_to_student(70, student2.Id)
+    class2.add_grade_to_student(70, student2.Person_Id)
 
     a.add(class2)
     # for i in a.collection:
@@ -115,5 +124,7 @@ if __name__ == "__main__":
     # print(a.all_courses_teacher())
     # print(a.all_grades_student(student1.Id))
     # print(a.get_teacher_course(teacher.Id))
-    a.print_all_students_with_your_courses()
-    print(a.average_student_courses(student2.Id))
+    # a.print_all_students_with_your_courses()
+    # print(a.average_student_courses(student2.Person_Id))
+    # print(a.all_courses_for_student(student1.Id))
+    print(a.show_all_data())
