@@ -1,20 +1,21 @@
 from student import Student
 from teacher import Teacher
+from course import Course
 
 class StudyClass:
     __Class_Id = 100
 
-    def __init__(self, teacher_instance, course_name: str):
+    def __init__(self, teacher_instance, course_instance):
         self.__teacher = teacher_instance
-        self.__course_name = course_name
+        self.__course = course_instance
         self.__id = StudyClass.__Class_Id
         self.__students = []
         self.__grade_course_students = {}
         StudyClass.__Class_Id += 100
 
     @property
-    def course_name(self):
-        return self.__course_name
+    def course(self):
+        return self.__course
 
     @property
     def students(self):
@@ -54,7 +55,7 @@ class StudyClass:
         :return: all students in the class
         """
         num = 1
-        all_students = [f"{self.course_name} Course:\n"]
+        all_students = [f"{self.course.name} Course:\n"]
         for i, student in enumerate(self.__students):
             all_students.append(f"{num}: {student.name}")
             num += 1
@@ -73,7 +74,7 @@ class StudyClass:
         return self
 
     def __str__(self):
-        return f"In this class learn: {self.course_name}, "\
+        return f"In this class learn: {self.course.name}, "\
                f"Teacher name: {self.class_teacher.name}, "\
                f"Amount students: {len(self.__students)}"
 

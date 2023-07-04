@@ -1,4 +1,4 @@
-from classes_manager import ClassesManager
+from program_manager import ProgramManager
 from student import Student
 from students_manager import StudentsManager
 from teachers_manage import TeachersManager
@@ -10,7 +10,7 @@ class College:
         self.city = city
         self.__studentManger = StudentsManager()
         self.__teachersManager = TeachersManager()
-        self.__classesManager = ClassesManager()
+        self.__classesManager = ProgramManager()
 
 
     @property

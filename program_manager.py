@@ -2,8 +2,9 @@ from collection_manager import CollectionManager
 from study_class import StudyClass
 from student import Student
 from teacher import Teacher
+from course import Course
 
-class ClassesManager(CollectionManager):
+class ProgramManager(CollectionManager):
 
     def all_courses_teacher(self):
         """
@@ -12,7 +13,7 @@ class ClassesManager(CollectionManager):
         """
         result = []
         for data in self.collection:
-            result.append(f"Course name: {data.course_name}, Teacher name: {data.class_teacher.name}\n")
+            result.append(f"Course name: {data.course.name}, Teacher name: {data.class_teacher.name}\n")
         return "".join(result)
 
     def all_grades_student(self, id_student):
@@ -24,7 +25,7 @@ class ClassesManager(CollectionManager):
         results = []
         for Class in self.collection:
             if id_student in Class.students_grade:
-                results.append(f"{Class.course_name}: {Class.students_grade[id_student]}\n")
+                results.append(f"{Class.course.name}: {Class.students_grade[id_student]}\n")
         return "".join(results) if results else "Don't have a grade to the student."
 
     def average_student_courses(self, id_student):
@@ -47,7 +48,7 @@ class ClassesManager(CollectionManager):
         results = []
         for Class in self.collection:
             if id_student in Class.students:
-                results.append(f"{Class.course_name}.\n")
+                results.append(f"{Class.course.name}.\n")
         return "".join(results) if results else "Don't have a courses to the student."
 
     def get_teacher_courses(self, teacher_id):
@@ -59,7 +60,7 @@ class ClassesManager(CollectionManager):
         result = []
         for Class in self.collection:
             if Class.class_teacher.Person_Id == teacher_id:
-                result.append(Class.course_name + "\n")
+                result.append(Class.course.name + "\n")
         return "".join(result) if result else "Don't have a teacher to the course."
 
     def print_all_students_with_your_courses(self):
@@ -71,9 +72,9 @@ class ClassesManager(CollectionManager):
         for Class in self.collection:
             for student in Class.students:
                 if student.name not in all_courses:
-                    all_courses[student.name] = [Class.course_name]
+                    all_courses[student.name] = [Class.course.name]
                 else:
-                    all_courses[student.name].append(Class.course_name)
+                    all_courses[student.name].append(Class.course.name)
         if all_courses:
             for key, value in all_courses.items():
                 print(key, ", ".join([str(i) for i in value]), sep=": ")
@@ -87,17 +88,19 @@ class ClassesManager(CollectionManager):
         """
         result = []
         for Class in self.collection:
-            result.append(f"Course name: {Class.course_name}"
-                          f"Teacher name: {Class.class_teacher.name},\n")
+            result.append(f"Course name: {Class.course.name}, "
+                          f"Teacher name: {Class.class_teacher.name},"
+                          f"Class id: {Class.Class_Id}\n")
         return "".join(result) if result else "Don't have a classes."
 
 
 if __name__ == "__main__":
+    english = Course("english")
     student1 = Student("avi", "a@a")
     student2 = Student("yosi", "a@a")
     teacher = Teacher("avi", "a@a")
 
-    class1 = StudyClass(teacher, "english")
+    class1 = StudyClass(teacher, english)
 
     class1.add_student(student1)
     class1.add_student(student2)
@@ -105,15 +108,15 @@ if __name__ == "__main__":
     # class1.add_grade_to_student(100, student1.Id)
     class1.add_grade_to_student(90, student2.Person_Id)
 
-    a = ClassesManager()
+    a = ProgramManager()
 
     a.add(class1)
 
     student4 = Student("dudi", "a@a")
     student3 = Student("yamy", "a@a")
     # teacher = Teacher("fadida", "a@a")
-
-    class2 = StudyClass(teacher, "oop")
+    oop = Course("oop")
+    class2 = StudyClass(teacher, oop)
     class2.add_student(student1)
     class2.add_student(student2)
     class2.add_grade_to_student(70, student2.Person_Id)
